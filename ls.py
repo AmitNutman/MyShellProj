@@ -1,1 +1,3 @@
-print(" i am in ls.py")
+import os
+
+os.system("dir")
