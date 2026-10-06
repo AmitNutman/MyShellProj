@@ -2,8 +2,21 @@ import subprocess
 import os
 
 
-#the command gives full path - so it can be recognised no matter where it is saved
+
+commands = ["ls", "hexdump", "grep", "exit"]
+#the command gives full path of where the file is saved
+#so we can show it on screen and it can be recognized no matter where it is saved
 full_path = os.path.dirname(os.path.abspath(__file__))
 
-#run bat file
-subprocess.call(os.path.join(full_path, "ls.bat"), shell=True)
+while True:
+    command = input(full_path + ">>>")
+
+    if command == "hello":
+        print(os.getlogin())
+    elif command == "cd":
+        pass
+    elif command in commands:
+        #run bat file
+        subprocess.call(os.path.join(full_path, command), shell=True)
+    else:
+        pass

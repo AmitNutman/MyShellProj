@@ -1,1 +1,1 @@
-python grep.py
+python C:\MyShellProj\grep.py
