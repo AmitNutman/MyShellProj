@@ -7,21 +7,24 @@ commands = ["ls", "hexdump", "grep", "exit"]
 #the command gives full path of where the file is saved
 #so we can show it on screen and it can be recognized no matter where it is saved
 full_path = os.path.dirname(os.path.abspath(__file__))
-current_path = os.path.dirname(os.path.abspath(__file__))
 
 while True:
-    command = input(current_path + ">>>")
+    # os.getcwd() = gives the path that the program runs in right now
+    command = input(os.getcwd() + ">>>")
+    splitted_command = command.split(" ")
 
-    if command == "hello":
+    if splitted_command[0] == "hello":
         print(os.getlogin())
-    elif command.split(" ")[0] == "cd":
+    elif splitted_command[0] == "cd":
         ####################need to check valid input
         #change folder
-        current_path = command.split(" ")[1]
-        os.chdir(current_path)
-    elif command in commands:
-        #run bat file
+        os.chdir(command.split(" ")[1])
+    elif splitted_command[0] in commands:
+        #put the batch path in place 0 instead of the command itself so it know which file to go to
+        splitted_command[0] = os.path.join(full_path, splitted_command[0]) + ".bat"
+        # run bat file
         # shell = True so we can run the command through the Windows shell in order to run the bat file
-        subprocess.call(os.path.join(full_path, command), shell=True)
+        subprocess.call(splitted_command, shell=True)
+
     else:
         pass
