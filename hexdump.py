@@ -20,3 +20,4 @@ if len(sys.argv) == 2:
 #if there are too many params / no params at all
 else:
     print("needs 1 param exactly - file path")
+
