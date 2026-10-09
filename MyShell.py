@@ -13,7 +13,9 @@ while True:
     command = input(os.getcwd() + ">>>")
     splitted_command = command.split(" ")
 
-    if splitted_command[0] == "hello":
+    if splitted_command[0] == "exit":
+        break
+    elif splitted_command[0] == "hello":
         print(os.getlogin())
     elif splitted_command[0] == "cd":
         ####################need to check valid input
