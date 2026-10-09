@@ -1,9 +1,11 @@
 import subprocess
 import os
+import sys
 
 
 
-commands = ["ls", "hexdump", "grep", "exit"]
+
+commands = ["ls", "hexdump", "grep"]
 #the command gives full path of where the file is saved
 #so we can show it on screen and it can be recognized no matter where it is saved
 full_path = os.path.dirname(os.path.abspath(__file__))
@@ -12,7 +14,6 @@ while True:
     # os.getcwd() = gives the path that the program runs in right now
     command = input(os.getcwd() + ">>>")
     splitted_command = command.split(" ")
-
     if splitted_command[0] == "exit":
         break
     elif splitted_command[0] == "hello":
@@ -30,3 +31,5 @@ while True:
 
     else:
         pass
+
+sys.exit()
