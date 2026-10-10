@@ -2,7 +2,7 @@ import os
 import sys
 
 
-#always has at least 1 param with file name(ls.py). the second param is what it got
+#always has at least 1 param with file name(hexdump.py). the second param is what it got
 if len(sys.argv) == 2:
     #recive the params from bat - the path to make into hex
     param_path = sys.argv[1]
