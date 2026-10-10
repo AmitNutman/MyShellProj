@@ -9,10 +9,10 @@ if len(sys.argv) == 2:
 
     #checks if the path exists
     if os.path.exists(param_path):
-        with open(param_path, "r") as file:
+        with open(param_path, "rb") as file:
             content = file.read()
         #encoding from str - so we can make it to hex
-        print(content.encode().hex())
+        print(content.hex())
 
     else:
         print("couldn't find file")
