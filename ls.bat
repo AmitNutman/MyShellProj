@@ -1,3 +1,5 @@
+::https://github.com/AmitNutman/MyShellProj
+
 ::python = so we can run a python file
 :: "" = so it can have spaces - allows it to have spaces
 :: %0 = the path of the current bat file - doesn't take it all -just the things (d, p)
