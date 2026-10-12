@@ -11,11 +11,16 @@ if len(sys.argv) == 2:
     if os.path.exists(param_path):
         with open(param_path, "rb") as file:
             content = file.read()
-        #encoding from str - so we can make it to hex
         print(content.hex())
 
     else:
         print("couldn't find file")
+
+
+elif len(sys.argv) == 1:
+    # came from pipe (|) - has no file path
+    content = sys.stdin.read()
+    print(content.encode('utf-8').hex())
 
 #if there are too many params / no params at all
 else:

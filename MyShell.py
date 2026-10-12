@@ -51,7 +51,21 @@ while True:
     elif splitted_command[0] in commands:
         #put the batch path in place 0 instead of the command itself so it know which file to go to
         splitted_command[0] = os.path.join(full_path, splitted_command[0]) + ".bat"
-        if ">" in splitted_command:
+        if "|" in splitted_command:
+            command_pipe = command.split("|")
+            #without the last char - space before |
+            first_command = command_pipe[0][:-1].split(" ")
+            #withut the first char - space after |
+            second_command = command_pipe[1][1:].split(" ")
+            first_command[0] = os.path.join(full_path, first_command[0]) + ".bat"
+            second_command[0] = os.path.join(full_path, second_command[0]) + ".bat"
+            #run the first command and save the result in pipe
+            first = subprocess.Popen(first_command, stdout=subprocess.PIPE, shell = True)
+            #run the second command with the first command output
+            second = subprocess.Popen(second_command, stdin=first.stdout, stdout=None, shell=True)
+            first.stdout.close()
+            second.communicate()
+        elif ">" in splitted_command:
             # write the output of the command to the file
             #the file path to write into is in the last index of list
             with open(splitted_command[-1], "w") as file_to_write_into:
